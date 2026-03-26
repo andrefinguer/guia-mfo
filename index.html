@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O que faz um Multi-Family Office — André Finguer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant:ital,wght@0,700;1,700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0B1F3A;
+  --navy2:  #0F2847;
+  --gold:   #C4953A;
+  --gold2:  #E8C06A;
+  --cream:  #F7F3EC;
+  --cream2: #EDE8DF;
+  --text:   #1A1A1A;
+  --muted:  #6B6560;
+  --light:  #F0EBE2;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ── GRAIN ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(11,31,58,0.98) 0%, transparent 100%);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold2);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(247,243,236,0.5);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  padding: 12rem 4rem 6rem 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-tag::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(247,243,236,0.6);
+  line-height: 1.6;
+  max-width: 420px;
+  margin-bottom: 3.5rem;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+  width: fit-content;
+}
+
+.hero-cta:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.hero-cta-arrow {
+  font-size: 1rem;
+  transition: transform 0.3s;
+}
+
+.hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
+
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-ornament {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-circle {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,149,58,0.15);
+  position: absolute;
+  animation: pulse-ring 4s ease-in-out infinite;
+}
+
+.hero-circle:nth-child(2) {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(196,149,58,0.25);
+  animation-delay: 0.5s;
+}
+
+.hero-circle:nth-child(3) {
+  width: 260px;
+  height: 260px;
+  border-color: rgba(196,149,58,0.4);
+  animation-delay: 1s;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.7; }
+}
+
+.hero-roman {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12rem;
+  font-weight: 300;
+  color: rgba(196,149,58,0.08);
+  line-height: 1;
+  position: absolute;
+  user-select: none;
+  letter-spacing: -0.05em;
+}
+
+.hero-stats {
+  position: absolute;
+  bottom: 4rem;
+  right: 4rem;
+  display: flex;
+  gap: 3rem;
+}
+
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(247,243,236,0.4);
+  margin-top: 0.3rem;
+}
+
+.hero-line {
+  position: absolute;
+  bottom: 0;
+  left: 8rem;
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, var(--gold));
+}
+
+/* ── SECTIONS GENERAL ── */
+section { position: relative; }
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* ── INTRO BAND ── */
+.intro-band {
+  background: var(--cream);
+  color: var(--text);
+  padding: 6rem 0;
+}
+
+.intro-band .section-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.intro-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-top: 0.5rem;
+}
+
+.intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.intro-text strong {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* ── CHAPTER SECTIONS ── */
+.chapter {
+  padding: 8rem 0;
+  border-top: 1px solid rgba(196,149,58,0.15);
+}
+
+.chapter-header {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 5rem;
+}
+
+.chapter-num {
+  font-family: 'Cormorant', serif;
+  font-size: 6rem;
+  font-weight: 700;
+  color: rgba(196,149,58,0.2);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  padding-top: 0.2rem;
+}
+
+.chapter-meta {
+  padding-top: 0.5rem;
+}
+
+.chapter-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.chapter-tag::after {
+  content: '';
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: rgba(196,149,58,0.3);
+  max-width: 60px;
+}
+
+.chapter-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.chapter-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding-left: calc(140px + 4rem);
+}
+
+.chapter-body.full { grid-template-columns: 1fr; }
+
+.prose {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(247,243,236,0.7);
+}
+
+.prose + .prose { margin-top: 0; }
+
+.prose strong {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+/* ── H2 inside chapter ── */
+.h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--gold2);
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem 2rem;
+  background: rgba(196,149,58,0.06);
+  margin: 2.5rem 0;
+}
+
+.callout p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(247,243,236,0.85);
+}
+
+/* ── BULLETS ── */
+.bullet-list {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.bullet-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(196,149,58,0.1);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: rgba(247,243,236,0.65);
+  line-height: 1.5;
+}
+
+.bullet-list li::before {
+  content: '—';
+  color: var(--gold);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.bullet-list li strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+/* ── COMPARISON TABLE ── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-family: 'Jost', sans-serif;
+}
+
+.compare-table th {
+  background: rgba(196,149,58,0.15);
+  color: var(--gold2);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 1.4rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(196,149,58,0.3);
+}
+
+.compare-table td {
+  padding: 0.9rem 1.4rem;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(247,243,236,0.65);
+  border-bottom: 1px solid rgba(247,243,236,0.06);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.compare-table tr:hover td { background: rgba(196,149,58,0.04); }
+
+.compare-table td:first-child {
+  color: var(--cream);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── SERVICE CARDS ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(196,149,58,0.1);
+  margin-top: 1rem;
+}
+
+.service-card {
+  background: var(--navy2);
+  padding: 2.5rem;
+  transition: background 0.3s;
+}
+
+.service-card:hover { background: rgba(196,149,58,0.05); }
+
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.service-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.service-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(247,243,236,0.5);
+  line-height: 1.7;
+}
+
+.service-list {
+  list-style: none;
+  margin-top: 1.2rem;
+}
+
+.service-list li {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(247,243,236,0.45);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.service-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* ── WARNING BOX ── */
+.warning-box {
+  border: 1px solid rgba(196,149,58,0.3);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  margin: 3rem 0;
+}
+
+.warning-box::before {
+  content: '!';
+  position: absolute;
+  top: -1rem;
+  right: 2rem;
+  font-family: 'Cormorant', serif;
+  font-size: 8rem;
+  font-weight: 700;
+  color: rgba(196,149,58,0.06);
+  line-height: 1;
+}
+
+.warning-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--gold2);
+  margin-bottom: 1rem;
+}
+
+.warning-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: rgba(247,243,236,0.65);
+  line-height: 1.75;
+}
+
+/* ── QUESTIONS LIST ── */
+.questions-list {
+  list-style: none;
+  margin-top: 2rem;
+  counter-reset: q;
+}
+
+.questions-list li {
+  counter-increment: q;
+  padding: 1.2rem 0 1.2rem 3.5rem;
+  border-bottom: 1px solid rgba(196,149,58,0.1);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(247,243,236,0.65);
+  position: relative;
+  line-height: 1.5;
+}
+
+.questions-list li::before {
+  content: counter(q, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  top: 1.4rem;
+}
+
+/* ── THREE COLS MODEL ── */
+.three-model {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(196,149,58,0.1);
+  margin-top: 2rem;
+}
+
+.model-card {
+  background: var(--navy2);
+  padding: 2.5rem 2rem;
+}
+
+.model-card.featured { background: rgba(196,149,58,0.08); }
+
+.model-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.model-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.model-divider {
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.model-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(247,243,236,0.06);
+  gap: 1rem;
+}
+
+.model-row-label {
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgba(247,243,236,0.4);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.model-row-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: rgba(247,243,236,0.7);
+  text-align: right;
+  line-height: 1.3;
+}
+
+.model-card.featured .model-row-val { color: var(--cream); }
+
+/* ── CLOSING ── */
+.closing {
+  background: var(--cream);
+  color: var(--text);
+  padding: 8rem 0;
+}
+
+.closing .section-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+}
+
+.closing-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.closing-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.closing-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: #4A4540;
+  margin-bottom: 3rem;
+}
+
+.closing-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 2.2rem;
+  background: var(--navy);
+  color: var(--gold2);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.closing-cta:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.closing-right {
+  border-left: 1px solid rgba(11,31,58,0.12);
+  padding-left: 6rem;
+}
+
+.closing-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.closing-author {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #060F1C;
+  padding: 3rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: rgba(247,243,236,0.4);
+}
+
+.footer-link {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.footer-link:hover { opacity: 1; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  z-index: 200;
+  transition: width 0.1s;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 2rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 8rem 2rem 4rem; }
+  .hero-right { display: none; }
+  .section-inner { padding: 0 2rem; }
+  .chapter-header { grid-template-columns: 1fr; gap: 1rem; }
+  .chapter-num { font-size: 4rem; }
+  .chapter-body { padding-left: 0; grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .three-model { grid-template-columns: 1fr; }
+  .closing .section-inner { grid-template-columns: 1fr; gap: 4rem; }
+  .closing-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(11,31,58,0.12); padding-top: 3rem; }
+  .intro-band .section-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">André Finguer</div>
+  <ul class="nav-links">
+    <li><a href="#origem">Origem</a></li>
+    <li><a href="#modelos">Modelos</a></li>
+    <li><a href="#atuacao">Atuação</a></li>
+    <li><a href="#mercado">Mercado</a></li>
+    <li><a href="#diferenca">Diferença</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag reveal">Guia Completo</div>
+    <h1 class="hero-title reveal reveal-delay-1">
+      O que faz um<br>
+      <em>Multi-Family<br>Office</em>
+    </h1>
+    <p class="hero-subtitle reveal reveal-delay-2">
+      Origem do modelo, atuação completa e como identificar se o que você contratou é, de fato, um Family Office.
+    </p>
+    <a href="#origem" class="hero-cta reveal reveal-delay-3">
+      Começar a leitura <span class="hero-cta-arrow">→</span>
+    </a>
+    <div class="hero-line"></div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-ornament">
+      <div class="hero-circle"></div>
+      <div class="hero-circle"></div>
+      <div class="hero-circle"></div>
+      <div class="hero-roman">MFO</div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Capítulos</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">8</div>
+        <div class="hero-stat-label">Frentes de Atuação</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">R$100M+</div>
+        <div class="hero-stat-label">Patrimônio-alvo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO BAND -->
+<div class="intro-band">
+  <div class="section-inner">
+    <div class="intro-label reveal">Apresentação</div>
+    <p class="intro-text reveal reveal-delay-1">
+      No Brasil, o termo <strong>Multi-Family Office</strong> tem sido usado de forma ampla e, muitas vezes, equivocada. Gestoras de recursos, plataformas de investimento e assessores de carteira frequentemente se apresentam sob esse nome — mas entregam apenas uma parte do que o modelo propõe. O objetivo deste guia é desfazer essa confusão e apresentar o modelo em sua <strong>forma completa</strong>.
+    </p>
+  </div>
+</div>
+
+<!-- CAP 1: ORIGEM -->
+<section class="chapter" id="origem">
+  <div class="section-inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-num">01</div>
+      <div class="chapter-meta">
+        <div class="chapter-tag">Contexto histórico</div>
+        <h2 class="chapter-title">Origem do Modelo<br>Family Office</h2>
+      </div>
+    </div>
+    <div class="chapter-body reveal">
+      <div>
+        <div class="h2">Do singular ao coletivo</div>
+        <p class="prose">
+          O modelo Family Office tem origem nos Estados Unidos do século XIX. O marco mais citado é o escritório criado por John D. Rockefeller em 1882 para administrar exclusivamente os interesses financeiros e patrimoniais de sua família. Naquele momento, o patrimônio acumulado era tão volumoso e diversificado que nenhuma instituição bancária conseguia gerenciá-lo de forma integrada e confidencial.
+        </p>
+        <p class="prose" style="margin-top:1.2rem">
+          O modelo se espalhou pela Europa ao longo do século XX, inicialmente entre famílias da aristocracia industrial britânica e alemã, e depois ganhou escala nos grandes centros financeiros globais.
+        </p>
+        <div class="callout">
+          <p>A diferença entre um MFO e um banco private não está só no tamanho — está na lógica. O banco vende produto. O MFO coordena estratégia.</p>
+        </div>
+      </div>
+      <div>
+        <div class="h2">O surgimento do Multi-Family Office</div>
+        <p class="prose">
+          O Multi-Family Office surgiu como evolução natural do modelo original. Com o crescimento do número de famílias com patrimônio relevante, o custo de manter uma estrutura dedicada e exclusiva passou a ser proibitivo para famílias que, embora ricas, não tinham o patrimônio de um Rockefeller.
+        </p>
+        <p class="prose" style="margin-top:1.2rem">
+          A solução foi compartilhar a estrutura — e os custos — entre múltiplas famílias, sem abrir mão da personalização, da confidencialidade e da visão integrada.
+        </p>
+        <div class="h2" style="margin-top:2rem">A chegada ao Brasil</div>
+        <p class="prose">
+          No Brasil, o modelo ganhou tração a partir dos anos 2000. Hoje há cerca de <strong>546 empresas</strong> no país atuando no segmento de wealth management que podem ser identificadas como family offices ou assessoramento patrimonial, segundo levantamento da Forbes Brasil com dados de 2025.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 2: SINGLE vs MULTI -->
+<section class="chapter" id="modelos">
+  <div class="section-inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-num">02</div>
+      <div class="chapter-meta">
+        <div class="chapter-tag">Estrutura e Comparativo</div>
+        <h2 class="chapter-title">Single vs.<br>Multi-Family Office</h2>
+      </div>
+    </div>
+    <div class="chapter-body full reveal" style="padding-left: calc(140px + 4rem)">
+      <p class="prose" style="max-width:640px; margin-bottom:3rem">
+        A distinção entre Single-Family Office (SFO) e Multi-Family Office (MFO) vai além do número de famílias atendidas. Ela reflete estruturas, custos, profundidade de serviço e grau de personalização fundamentalmente diferentes.
+      </p>
+      <div class="three-model">
+        <div class="model-card">
+          <div class="model-tag">Single-Family Office</div>
+          <div class="model-title">Estrutura<br>exclusiva</div>
+          <div class="model-divider"></div>
+          <div class="model-row"><span class="model-row-label">Patrimônio mín.</span><span class="model-row-val">R$ 500M+</span></div>
+          <div class="model-row"><span class="model-row-label">Personalização</span><span class="model-row-val">Total</span></div>
+          <div class="model-row"><span class="model-row-label">Equipe</span><span class="model-row-val">Própria dedicada</span></div>
+          <div class="model-row"><span class="model-row-label">Confidencial.</span><span class="model-row-val">Máxima</span></div>
+          <div class="model-row"><span class="model-row-label">Custo</span><span class="model-row-val">Muito elevado</span></div>
+        </div>
+        <div class="model-card featured">
+          <div class="model-tag">Multi-Family Office</div>
+          <div class="model-title">Estrutura<br>compartilhada</div>
+          <div class="model-divider"></div>
+          <div class="model-row"><span class="model-row-label">Patrimônio mín.</span><span class="model-row-val">R$ 30–50M+</span></div>
+          <div class="model-row"><span class="model-row-label">Personalização</span><span class="model-row-val">Alta</span></div>
+          <div class="model-row"><span class="model-row-label">Equipe</span><span class="model-row-val">Multidisciplinar</span></div>
+          <div class="model-row"><span class="model-row-label">Confidencial.</span><span class="model-row-val">Alta, com segregação</span></div>
+          <div class="model-row"><span class="model-row-label">Custo</span><span class="model-row-val">Proporcional</span></div>
+        </div>
+        <div class="model-card">
+          <div class="model-tag">Banco Private</div>
+          <div class="model-title">Gestão<br>bancária</div>
+          <div class="model-divider"></div>
+          <div class="model-row"><span class="model-row-label">Patrimônio mín.</span><span class="model-row-val">Variável</span></div>
+          <div class="model-row"><span class="model-row-label">Personalização</span><span class="model-row-val">Média</span></div>
+          <div class="model-row"><span class="model-row-label">Equipe</span><span class="model-row-val">Banco / gerente</span></div>
+          <div class="model-row"><span class="model-row-label">Confidencial.</span><span class="model-row-val">Institucional</span></div>
+          <div class="model-row"><span class="model-row-label">Custo</span><span class="model-row-val">Produto / spread</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 3: ATUAÇÃO -->
+<section class="chapter" id="atuacao">
+  <div class="section-inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-num">03</div>
+      <div class="chapter-meta">
+        <div class="chapter-tag">Serviços e Frentes</div>
+        <h2 class="chapter-title">O que faz um<br>Multi-Family Office</h2>
+      </div>
+    </div>
+    <div class="chapter-body full reveal" style="padding-left: calc(140px + 4rem)">
+      <p class="prose" style="max-width:640px; margin-bottom:3rem">
+        Um MFO atua em oito frentes complementares. Cada uma pode ser relevante de forma isolada — mas o valor do modelo está exatamente na <strong>integração entre todas</strong>.
+      </p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">3.1</div>
+          <div class="service-title">Planejamento Patrimonial e Implementação</div>
+          <div class="service-desc">Diagnóstico completo do patrimônio, plano integrado e execução coordenada com advogados, contadores e cartórios.</div>
+          <ul class="service-list">
+            <li>Mapeamento 360° de ativos e passivos</li>
+            <li>Planejamento tributário integrado</li>
+            <li>Planejamento sucessório contínuo</li>
+            <li>Implementação — não só recomendação</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.2</div>
+          <div class="service-title">Gestão e Consultoria de Investimentos</div>
+          <div class="service-desc">Alocação estratégica independente, sem conflito de interesse com produto financeiro.</div>
+          <ul class="service-list">
+            <li>Independência total de produto</li>
+            <li>Seleção de gestores externos</li>
+            <li>Política de investimento formalizada</li>
+            <li>Relatórios consolidados</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.3</div>
+          <div class="service-title">Gestão do Patrimônio Imobiliário</div>
+          <div class="service-desc">Avaliação, gestão de locações, desinvestimentos e regularização, coordenados com a estratégia tributária.</div>
+          <ul class="service-list">
+            <li>Avaliação e due diligence</li>
+            <li>Gestão de contratos e locações</li>
+            <li>Decisões de desinvestimento</li>
+            <li>Regularização de registros</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.4</div>
+          <div class="service-title">Orientação a Negócios</div>
+          <div class="service-desc">Visão financeira e patrimonial para decisões empresariais que afetam o conjunto do patrimônio familiar.</div>
+          <ul class="service-list">
+            <li>Análise de estrutura de capital</li>
+            <li>Avaliação de alavancagem financeira</li>
+            <li>Análise de projetos de investimento</li>
+            <li>Coordenação em processos de M&A</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.5</div>
+          <div class="service-title">Time de Análise de Projetos</div>
+          <div class="service-desc">Capacidade analítica de investment banking dedicada exclusivamente à família — valuation, crédito e due diligence.</div>
+          <ul class="service-list">
+            <li>Valuation de empresas e ativos</li>
+            <li>Análise de crédito estruturado</li>
+            <li>Due diligence imobiliária</li>
+            <li>Análise de FIDCs e dívida privada</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.6</div>
+          <div class="service-title">Controladoria das Holdings</div>
+          <div class="service-desc">Controle financeiro rigoroso das holdings patrimoniais — contas, fluxo de caixa, obrigações e relatórios.</div>
+          <ul class="service-list">
+            <li>Contas a pagar e receber</li>
+            <li>Conciliação de receitas imobiliárias</li>
+            <li>Apuração de resultados</li>
+            <li>Relatórios gerenciais consolidados</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.7</div>
+          <div class="service-title">Desenvolvimento Imobiliário</div>
+          <div class="service-desc">Estruturação e gestão de projetos imobiliários — viabilidade, SPEs, coordenação de parceiros e acompanhamento.</div>
+          <ul class="service-list">
+            <li>Análise de viabilidade</li>
+            <li>Estruturação de SPEs</li>
+            <li>Coordenação de incorporadoras</li>
+            <li>Monitoramento financeiro do projeto</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-num">3.8</div>
+          <div class="service-title">Gestão de Ativos Offshore</div>
+          <div class="service-desc">Estruturas internacionais, compliance fiscal e integração com o planejamento sucessório brasileiro.</div>
+          <ul class="service-list">
+            <li>LLCs, holdings e trusts</li>
+            <li>Carteira internacional independente</li>
+            <li>CBE, IRPF e FATCA</li>
+            <li>Integração com sucessão local</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 4: O QUE O MERCADO CHAMA DE MFO -->
+<section class="chapter" id="mercado">
+  <div class="section-inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-num">04</div>
+      <div class="chapter-meta">
+        <div class="chapter-tag">Atenção</div>
+        <h2 class="chapter-title">O que o mercado<br>chama de MFO — e não é</h2>
+      </div>
+    </div>
+    <div class="chapter-body full reveal" style="padding-left: calc(140px + 4rem)">
+      <p class="prose" style="max-width:700px">
+        No Brasil, o crescimento do mercado de wealth management foi acompanhado por uma proliferação do uso do termo Multi-Family Office. Plataformas de investimento, assessores certificados, gestoras de recursos e bancos digitais passaram a adotar a nomenclatura — sem necessariamente entregar o modelo completo.
+      </p>
+      <div class="warning-box reveal">
+        <div class="warning-title">Na prática, o que a maioria entrega</div>
+        <p class="warning-text">Grande parte do que se apresenta como Multi-Family Office no Brasil entrega essencialmente uma coisa: <strong>gestão da carteira de investimentos financeiros</strong>. É um serviço relevante — mas é apenas uma das oito frentes que um MFO completo deveria cobrir.</p>
+      </div>
+      <div class="callout reveal">
+        <p>Quando seu 'family office' só fala de carteira, você está pagando por assessoria de investimentos com nome premium.</p>
+      </div>
+      <div class="h2 reveal" style="margin-top:3rem">Como identificar a diferença</div>
+      <p class="prose reveal" style="max-width:640px; margin-bottom:1rem">Algumas perguntas diretas permitem avaliar rapidamente o que você está contratando:</p>
+      <ol class="questions-list reveal">
+        <li>Vocês fazem planejamento e implementação sucessória — ou apenas indicam advogados?</li>
+        <li>Existe uma equipe dedicada a analisar projetos imobiliários e operações de crédito estruturado?</li>
+        <li>Vocês gerenciam ativamente os ativos imobiliários da família — ou só os financeiros?</li>
+        <li>Como funciona a controladoria das holdings? Quem apura resultados e obrigações acessórias?</li>
+        <li>Vocês operam estruturas offshore — ou apenas recomendam o uso delas?</li>
+        <li>Como vocês são remunerados? Há rebate de gestoras ou o fee vem exclusivamente do cliente?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 5: DIFERENÇA -->
+<section class="chapter" id="diferenca">
+  <div class="section-inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-num">05</div>
+      <div class="chapter-meta">
+        <div class="chapter-tag">Clareza conceitual</div>
+        <h2 class="chapter-title">Assessoria, Consultoria<br>e Family Office</h2>
+      </div>
+    </div>
+    <div class="chapter-body full reveal" style="padding-left: calc(140px + 4rem)">
+      <p class="prose" style="max-width:640px; margin-bottom:3rem">
+        Os três modelos existem no mercado, têm legitimidade e atendem perfis diferentes. O problema não é a existência de cada um — é a <strong>confusão entre eles</strong>, frequentemente alimentada por quem tem interesse em parecer mais do que é.
+      </p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Assessoria</th>
+            <th>Consultoria</th>
+            <th>Multi-Family Office</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Escopo</td><td>Carteira financeira</td><td>Carteira financeira</td><td>Patrimônio completo</td></tr>
+          <tr><td>Remuneração</td><td>Comissão de produto</td><td>Fee do cliente</td><td>Fee do cliente, sem rebate</td></tr>
+          <tr><td>Independência</td><td>Limitada</td><td>Alta</td><td>Total</td></tr>
+          <tr><td>Execução</td><td>Sim</td><td>Apenas recomenda</td><td>Planeja e executa</td></tr>
+          <tr><td>Imóveis</td><td>Não</td><td>Não</td><td>Sim</td></tr>
+          <tr><td>Empresa / Holding</td><td>Não</td><td>Não</td><td>Sim</td></tr>
+          <tr><td>Planejamento sucessório</td><td>Não</td><td>Não</td><td>Sim — integrado</td></tr>
+          <tr><td>Offshore</td><td>Parcialmente</td><td>Parcialmente</td><td>Sim — completo</td></tr>
+          <tr><td>Controladoria</td><td>Não</td><td>Não</td><td>Sim</td></tr>
+          <tr><td>Análise de projetos</td><td>Não</td><td>Não</td><td>Sim — equipe dedicada</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing" id="contato">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="closing-eyebrow">Considerações finais</div>
+      <h2 class="closing-title">A pergunta que<br>realmente importa</h2>
+      <p class="closing-text">
+        Para famílias com patrimônio acima de R$ 100 milhões, a pergunta relevante não é "o que é um Multi-Family Office". É outra: existe alguém na minha estrutura atual responsável por garantir que todas as decisões patrimoniais estejam alinhadas entre si — e com os objetivos da minha família para as próximas gerações?
+      </p>
+      <a href="https://andrefinguer.substack.com" class="closing-cta">
+        Acessar o Substack <span>→</span>
+      </a>
+    </div>
+    <div class="closing-right reveal reveal-delay-2">
+      <p class="closing-quote">
+        "Um Multi-Family Office não é um produto financeiro. É uma estrutura de coordenação do patrimônio — com visão integrada, independência e compromisso com o longo prazo da família."
+      </p>
+      <div class="closing-author">André Finguer — Gestor Patrimonial</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">André Finguer · Gestão Patrimonial Integrada</div>
+  <a href="https://andrefinguer.substack.com" class="footer-link">andrefinguer.substack.com</a>
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (scrollTop / docHeight) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Trigger hero reveals on load
+setTimeout(() => {
+  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+}, 100);
+</script>
+</body>
+</html>
