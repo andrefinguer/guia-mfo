@@ -1199,9 +1199,6 @@ footer {
       <p class="closing-text">
         Para famílias com patrimônio acima de R$ 100 milhões, a pergunta relevante não é "o que é um Multi-Family Office". É outra: existe alguém na minha estrutura atual responsável por garantir que todas as decisões patrimoniais estejam alinhadas entre si — e com os objetivos da minha família para as próximas gerações?
       </p>
-      <a href="https://andrefinguer.substack.com" class="closing-cta">
-        Acessar o Substack <span>→</span>
-      </a>
     </div>
     <div class="closing-right reveal reveal-delay-2">
       <p class="closing-quote">
@@ -1212,11 +1209,255 @@ footer {
   </div>
 </div>
 
+<!-- CONTACT FORM -->
+<section class="contact-section" id="fale-comigo">
+  <div class="section-inner">
+    <div class="contact-wrap reveal">
+      <div class="contact-left">
+        <div class="contact-eyebrow">Fale comigo</div>
+        <h2 class="contact-title">Vamos conversar<br>sobre o seu<br><em>patrimônio</em></h2>
+        <p class="contact-desc">
+          Preencha o formulário e entrarei em contato diretamente. A conversa é confidencial e sem compromisso.
+        </p>
+        <div class="contact-detail">
+          <span class="contact-detail-icon">◈</span>
+          <span>Diagnóstico inicial gratuito</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-icon">◈</span>
+          <span>Resposta em até 24 horas</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-icon">◈</span>
+          <span>Total confidencialidade</span>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="form-wrap" id="formWrap">
+          <div class="form-group">
+            <label class="form-label">Nome completo</label>
+            <input type="text" class="form-input" id="f-nome" placeholder="Seu nome completo">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Melhor e-mail</label>
+            <input type="email" class="form-input" id="f-email" placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Melhor WhatsApp</label>
+            <input type="tel" class="form-input" id="f-whats" placeholder="+55 (00) 00000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Por que deseja entrar em contato?</label>
+            <textarea class="form-input form-textarea" id="f-msg" placeholder="Descreva brevemente sua situação ou dúvida..."></textarea>
+          </div>
+          <div class="form-error" id="formError"></div>
+          <button class="form-btn" onclick="submitForm()">
+            <span>Enviar mensagem</span>
+            <span class="form-btn-arrow">→</span>
+          </button>
+        </div>
+        <div class="form-success" id="formSuccess" style="display:none">
+          <div class="success-icon">✓</div>
+          <div class="success-title">Mensagem enviada</div>
+          <p class="success-text">Você será redirecionado para o WhatsApp em instantes para continuarmos a conversa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">André Finguer · Gestão Patrimonial Integrada</div>
   <a href="https://andrefinguer.substack.com" class="footer-link">andrefinguer.substack.com</a>
 </footer>
+
+<style>
+/* ── CONTACT SECTION ── */
+.contact-section {
+  background: var(--navy2);
+  padding: 8rem 0;
+  border-top: 1px solid rgba(196,149,58,0.15);
+}
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 8rem;
+  align-items: start;
+}
+
+.contact-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.contact-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.8rem;
+}
+
+.contact-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.contact-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: rgba(247,243,236,0.5);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(196,149,58,0.1);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(247,243,236,0.5);
+  letter-spacing: 0.04em;
+}
+
+.contact-detail-icon {
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+/* ── FORM ── */
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(247,243,236,0.4);
+}
+
+.form-input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,149,58,0.2);
+  border-radius: 0;
+  padding: 0.9rem 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-input::placeholder { color: rgba(247,243,236,0.2); }
+
+.form-input:focus {
+  border-color: var(--gold);
+  background: rgba(196,149,58,0.04);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+.form-error {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  color: #E07070;
+  letter-spacing: 0.05em;
+  min-height: 1rem;
+}
+
+.form-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.6rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.form-btn:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.form-btn-arrow { font-size: 1rem; transition: transform 0.3s; }
+.form-btn:hover .form-btn-arrow { transform: translateX(4px); }
+
+/* ── SUCCESS ── */
+.form-success {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.success-icon {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+
+.success-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: rgba(247,243,236,0.5);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .contact-wrap { grid-template-columns: 1fr; gap: 4rem; }
+}
+</style>
 
 <script>
 // Progress bar
@@ -1242,6 +1483,33 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
 }, 100);
+
+// Form submit
+function submitForm() {
+  const nome  = document.getElementById('f-nome').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const whats = document.getElementById('f-whats').value.trim();
+  const msg   = document.getElementById('f-msg').value.trim();
+  const err   = document.getElementById('formError');
+
+  if (!nome)  { err.textContent = 'Por favor, informe seu nome completo.'; return; }
+  if (!email) { err.textContent = 'Por favor, informe seu e-mail.'; return; }
+  if (!whats) { err.textContent = 'Por favor, informe seu WhatsApp.'; return; }
+  if (!msg)   { err.textContent = 'Por favor, deixe um breve comentário.'; return; }
+  err.textContent = '';
+
+  // Show success state
+  document.getElementById('formWrap').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+
+  // Build WhatsApp message
+  const text = `Olá André, vim pelo guia *O que faz um Multi-Family Office*.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*WhatsApp:* ${whats}\n\n*Motivo do contato:*\n${msg}`;
+  const encoded = encodeURIComponent(text);
+  const waUrl = `https://wa.me/5547988544714?text=${encoded}`;
+
+  // Redirect after short delay
+  setTimeout(() => { window.open(waUrl, '_blank'); }, 1800);
+}
 </script>
 </body>
 </html>
